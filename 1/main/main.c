@@ -32,9 +32,9 @@ void T2_th(void *data)
 		int i = 0;
 		while(1)
 		{
-			printf("[%d] Task3 created\n",i);
+			printf("[%d] Task2 created\n",i);
 			i++;
-			printf("Task3 ends\n");
+			printf("Task2 ends\n");
 			privious_tick = xTaskGetTickCount();
                		vTaskDelayUntil(&privious_tick,pdMS_TO_TICKS(2000));
 		}
@@ -47,9 +47,9 @@ void T3_th(void *data)
                 int k = 0;
                 while(1)
                 {
-                        printf("[%d] Task2 created\n",k);
+                        printf("[%d] Task3 created\n",k);
                         k++;
-                        printf("Task2 ends\n");
+                        printf("Task3 ends\n");
                         privious_tick = xTaskGetTickCount();
                         vTaskDelayUntil(&privious_tick,pdMS_TO_TICKS(5000));
                 }
@@ -90,7 +90,7 @@ void app_main(void)
 {
     xTaskCreate(T1_th,"mytask_1",1024,NULL,0,&T1);
     xTaskCreate(T2_th,"mytask_2",1024,NULL,0,&T2);
-    xTaskCreate(T3_th,"mytask_2",1024,NULL,0,&T3);
-    xTaskCreate(T4_th,"mytask_2",2048,NULL,0,&T4);
-    xTaskCreate(T5_th,"mytask_2",2048,NULL,0,&T5);
+    xTaskCreate(T3_th,"mytask_3",1024,NULL,0,&T3);
+    xTaskCreate(T4_th,"mytask_4",2048,NULL,0,&T4);
+    xTaskCreate(T5_th,"mytask_5",2048,NULL,0,&T5);
 }
