@@ -3,15 +3,16 @@
 #include "freertos/task.h"
 #include "queue.h"
 
+/*task handelers*/
  TaskHandle_t T1;
  TaskHandle_t T2;
  TaskHandle_t T3;
  TaskHandle_t T4;
  TaskHandle_t T5;
 
-  QueueHandle_t myqueue;
+  QueueHandle_t myqueue; // queue handlers
 
-void T1_th(void *data)
+void T1_th(void *data) // first task
 {
 	int j = 0;
 	TickType_t privious_tick;
@@ -20,13 +21,13 @@ void T1_th(void *data)
 		printf("[%d] Task1 created\n",j);
 		j++;
 		printf("Task1 ends\n");
-		privious_tick = xTaskGetTickCount();
-		vTaskDelayUntil(&privious_tick,pdMS_TO_TICKS(1000));
+		privious_tick = xTaskGetTickCount(); // finding number of ticks
+		vTaskDelayUntil(&privious_tick,pdMS_TO_TICKS(1000)); // make accurete delay 1000 ms
 	}
 }
 
 
-void T2_th(void *data)
+void T2_th(void *data) // create task 2
 	{
 		TickType_t privious_tick;
 		int i = 0;
@@ -41,7 +42,7 @@ void T2_th(void *data)
 	}
 
 
-void T3_th(void *data)
+void T3_th(void *data) // task 3 create
         {
                 TickType_t privious_tick;
                 int k = 0;
@@ -55,9 +56,9 @@ void T3_th(void *data)
                 }
         }
 
-void T4_th(void *data)
+void T4_th(void *data) // task 4
         {
-        	char txbuff[4];
+        	char txbuff[4]; // create a buffer
 		myqueue = xQueueCreate(4,sizeof(txbuff));        
                 
 		sprintf(txbuff,"10");
