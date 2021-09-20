@@ -60,10 +60,10 @@ void T4_th(void *data)
         	char txbuff[4];
 		myqueue = xQueueCreate(4,sizeof(txbuff));        
                 
-		printf(txbuff,"10");
+		sprintf(txbuff,"10");
 		xQueueSend(myqueue, (void *)txbuff,(TickType_t)0);
 
-		printf(txbuff, "11");
+		sprintf(txbuff,"11");
                 xQueueSend(myqueue, (void *)txbuff,(TickType_t)0);
                           
 	}
